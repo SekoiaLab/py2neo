@@ -114,6 +114,8 @@ class JSONDehydrator(object):
                 raise TypeError("Parameters passed over JSON do not support BYTES")
             elif isinstance(obj, list):
                 return list(map(dehydrate_, obj))
+            elif isinstance(obj, map):
+                return list(map(dehydrate_, obj))
             elif isinstance(obj, dict):
                 return {key: dehydrate_(value) for key, value in obj.items()}
             else:
